@@ -11,6 +11,12 @@
 
 [dev-container-settings](https://code.visualstudio.com/docs/remote/create-dev-container)
 
+[vscode-lsp](https://code.visualstudio.com/api/language-extensions/language-server-extension-guide)
+
+[gopls-language-server](https://medium.com/the-andela-way/gopls-language-server-setup-for-go-projects-3ee79dcac123)
+
+[go-settings-json](https://github.com/golang/tools/blob/master/gopls/doc/vscode.md)
+
 ## Author
 **Akshit Sadana <akshitsadana@gmail.com>**
 

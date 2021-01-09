@@ -1,20 +1,25 @@
 {
-    "editor.codeActionsOnSave": {},
-    "go.testOnSave": false,
-    "go.lintOnSave": "workspace",
-    "go.liveErrors": {
-        "enabled": false,
-        "delay": 500
+  "go.useLanguageServer": true,
+  "go.testOnSave": false,
+  "go.lintOnSave": "workspace",
+  // "go.autocompleteUnimportedPackages": true,
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
     },
-    "go.formatTool": "gofmt",
-    "go.docsTool": "godoc",
-    "go.autocompleteUnimportedPackages": true,
-    "[go]": {
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-            "source.fixAll": true
-        }
+    "editor.snippetSuggestions": "none"
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
     }
+  },
+  "gopls": {
+    "ui.completion.usePlaceholders": true,
+    "ui.diagnostic.staticcheck": true
+  }
 }
