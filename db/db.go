@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	// import study
+	// import pq
 	_ "github.com/lib/pq"
 )
 
