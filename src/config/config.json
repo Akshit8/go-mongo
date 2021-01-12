@@ -1,0 +1,11 @@
+{
+    "port": ":8808",
+
+    "mgAddrs": "127.0.0.1:27017",
+    "mgDbName": "go-microservices",
+    "mgDbUsername": "",
+    "mgDbPassword": "",
+
+    "jwtSecretPassword": "raycasdasdasdadad",
+    "issuer": "asdsdfasd"
+}
