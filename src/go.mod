@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
-	github.com/gin-gonic/contrib v0.0.0-20201101042839-6a891bf89f19 // indirect
+	github.com/gin-gonic/contrib v0.0.0-20201101042839-6a891bf89f19
 	github.com/gin-gonic/gin v1.6.3
 	github.com/sirupsen/logrus v1.7.0
 	github.com/swaggo/gin-swagger v1.3.0
