@@ -16,8 +16,8 @@ import (
 
 // Configuration stores setting values
 type Configuration struct {
-	Port string `json:"port"`
-	EnableGinConsoleLog bool `json:"enableGinConsoleLog"`
+	Port                string `json:"port"`
+	EnableGinConsoleLog bool   `json:"enableGinConsoleLog"`
 
 	MgAddrs      string `json:"mgAddrs"`
 	MgDBName     string `json:"mgDbName"`
@@ -37,22 +37,18 @@ const (
 	ColNotes = "notes"
 )
 
-// Http Status messages
+// Status messages
 const (
 	ErrNameEmpty      = "name is empty"
 	ErrPasswordEmpty  = "password is empty"
 	ErrNotObjectIDHex = "string is not a valid hex representation of an ObjectId"
 )
 
-// Http Status Codes
+// Status Codes
 const (
-	StatusCodeOk           = 200
-	StatusCodeCreated      = 201
-	StatusCodeBadRequest   = 400
-	StatusCodeUnauthorized = 401
-	StatusCodeForbidden    = 403
-	StatusCodeNotFound     = 404
-	StatusCodeServerError  = 500
+	StatusCodeUnknown = -1
+	StatusCodeOK      = 1000
+	StatusMismatch    = 10
 )
 
 // LoadConfig loads configuration from the config file

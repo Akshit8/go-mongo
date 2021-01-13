@@ -52,7 +52,7 @@ func (db *MongoDB) initData() error {
 
 	if count < 1 {
 		// Create admin/admin account
-		user := models.User{ID: bson.NewObjectId(), Name: "admin", Email: "admin@mail.com", Password: "adminPassword"}
+		user := models.User{ID: bson.NewObjectId(), Name: "admin", Password: "adminPassword"}
 		err = collection.Insert(&user)
 	}
 
