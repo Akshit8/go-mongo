@@ -17,6 +17,7 @@ import (
 // Configuration stores setting values
 type Configuration struct {
 	Port string `json:"port"`
+	EnableGinConsoleLog bool `json:"enableGinConsoleLog"`
 
 	MgAddrs      string `json:"mgAddrs"`
 	MgDBName     string `json:"mgDbName"`

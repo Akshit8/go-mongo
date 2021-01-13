@@ -62,6 +62,7 @@ func (db *MongoDB) initData() error {
 // Close the existing connection
 func (db *MongoDB) Close() {
 	if db.MgDBSession != nil {
+		log.Info("closing connection to mongo db")
 		db.MgDBSession.Close()
 	}
 }

@@ -1,5 +1,6 @@
 {
-    "port": ":8808",
+    "port": ":8080",
+    "EnableGinConsoleLog": true,
 
     "mgAddrs": "127.0.0.1:27017",
     "mgDbName": "go-microservices",
