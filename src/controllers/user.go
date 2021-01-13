@@ -93,7 +93,7 @@ func (u *User) AddUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, models.Message{"Successfully"})
 		log.Debug("Registered a new user = " + user.Name + ", password = " + user.Password)
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }
@@ -116,7 +116,7 @@ func (u *User) ListUsers(ctx *gin.Context) {
 	if err == nil {
 		ctx.JSON(http.StatusOK, users)
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }
@@ -141,7 +141,7 @@ func (u *User) GetUserByID(ctx *gin.Context) {
 	if err == nil {
 		ctx.JSON(http.StatusOK, user)
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }
@@ -166,7 +166,7 @@ func (u *User) GetUserByParams(ctx *gin.Context) {
 	if err == nil {
 		ctx.JSON(http.StatusOK, user)
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }
@@ -189,7 +189,7 @@ func (u *User) DeleteUserByID(ctx *gin.Context) {
 	if err == nil {
 		ctx.JSON(http.StatusOK, models.Message{"Successfully"})
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }
@@ -208,7 +208,7 @@ func (u *User) DeleteUserByID(ctx *gin.Context) {
 func (u *User) UpdateUser(ctx *gin.Context) {
 	var user models.User
 	if err := ctx.ShouldBindJSON(&user); err != nil {
-		ctx.JSON(http.StatusBadRequest, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusBadRequest, models.Error{config.StatusCodeUnknown, err.Error()})
 		return
 	}
 
@@ -217,7 +217,7 @@ func (u *User) UpdateUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, models.Message{"Successfully"})
 		log.Debug("Registered a new user = " + user.Name + ", password = " + user.Password)
 	} else {
-		ctx.JSON(http.StatusInternalServerError, models.Error{common.StatusCodeUnknown, err.Error()})
+		ctx.JSON(http.StatusInternalServerError, models.Error{config.StatusCodeUnknown, err.Error()})
 		log.Debug("[ERROR]: ", err)
 	}
 }

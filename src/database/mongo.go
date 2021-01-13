@@ -8,6 +8,10 @@
 package database
 
 import (
+	"crypto/tls"
+	"net"
+	"time"
+
 	"github.com/Akshit8/go-boilerplate/config"
 	"github.com/Akshit8/go-boilerplate/models"
 	log "github.com/sirupsen/logrus"
@@ -22,16 +26,36 @@ type MongoDB struct {
 }
 
 // Init initializes mongo database
-func (db *MongoDB) Init(addressString string) error {
+func (db *MongoDB) Init() error {
 	db.DatabaseName = config.Config.MgDBName
+
+	// DialInfo holds options for establishing a session with a MongoDB cluster.
+	dialInfo := &mgo.DialInfo{
+		Addrs: []string{
+			"cluster0-shard-00-01.y2ty6.mongodb.net:27017",
+			"cluster0-shard-00-00.y2ty6.mongodb.net:27017",
+			"cluster0-shard-00-02.y2ty6.mongodb.net:27017",
+		}, // Get HOST + PORT
+		Timeout: 60 * time.Second,
+		// Database: db.DatabaseName,            // Database name
+		Username: config.Config.MgDBUsername, // Username
+		Password: config.Config.MgDBPassword, // Password
+	}
+
+	tlsConfig := &tls.Config{}
+
+	dialInfo.DialServer = func(addr *mgo.ServerAddr) (net.Conn, error) {
+		conn, err := tls.Dial("tcp", addr.String(), tlsConfig) // add TLS config
+		return conn, err
+	}
 
 	// Create a session which maintains a pool of socket connections
 	// to the DB MongoDB database.
 	var err error
-	db.MgDBSession, err = mgo.Dial(addressString)
+	db.MgDBSession, err = mgo.DialWithInfo(dialInfo)
 
 	if err != nil {
-		log.Error("Can't connect to mongo, notes error: ", err)
+		log.Error("Can't connect to mongo", err)
 	}
 
 	return db.initData()

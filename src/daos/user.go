@@ -29,12 +29,12 @@ func (u *User) GetAll() ([]models.User, error) {
 	collection := sessionCopy.DB(database.Database.DatabaseName).C(config.ColUsers)
 
 	var users []models.User
-	err := collection.Find(bson.M{}).All(users)
+	err := collection.Find(bson.M{}).All(&users)
 	return users, err
 }
 
 // GetByID finds a User by its id
-func (u *User) getByID(id string) (models.User, error) {
+func (u *User) GetByID(id string) (models.User, error) {
 	var err error
 
 	err = u.utils.ValidateObjectID(id)

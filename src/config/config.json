@@ -2,10 +2,10 @@
     "port": ":8080",
     "EnableGinConsoleLog": true,
 
-    "mgAddrs": "127.0.0.1:27017",
-    "mgDbName": "go-microservices",
-    "mgDbUsername": "",
-    "mgDbPassword": "",
+    "mgAddrs": "cluster0.y2ty6.mongodb.net",
+    "mgDBName": "userDB",
+    "mgDBUsername": "akshit",
+    "mgDBPassword": "akshit2853",
 
     "jwtSecretPassword": "raycasdasdasdadad",
     "issuer": "asdsdfasd"

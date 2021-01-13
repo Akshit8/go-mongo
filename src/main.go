@@ -7,11 +7,14 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"os"
 
 	"github.com/Akshit8/go-boilerplate/config"
+	"github.com/Akshit8/go-boilerplate/controllers"
 	"github.com/Akshit8/go-boilerplate/database"
+	"github.com/gin-gonic/contrib/jwt"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -32,10 +35,8 @@ func (m *Main) initServer() error {
 		return err
 	}
 
-	mongoDBAddressString := "mongodb+srv://akshit:akshit2853@cluster0.y2ty6.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
 	// Initialize User database
-	err = database.Database.Init(mongoDBAddressString)
+	err = database.Database.Init()
 	if err != nil {
 		return err
 	}
@@ -51,7 +52,7 @@ func (m *Main) initServer() error {
 	return nil
 }
 
-// @title NotesManagement Service API Document
+// @title User Service API Document
 // @version 1.0
 // @description List APIs of UserManagement Service
 // @termsOfService http://swagger.io/terms/
@@ -63,15 +64,41 @@ func main() {
 
 	// Initialize server
 	if m.initServer() != nil {
-		return
+		fmt.Print("init server error")
+		return 
 	}
 
 	defer database.Database.Close()
+
+	c := controllers.User{}
+	// Simple group: v1
+	v1 := m.router.Group("/api/v1")
+	{
+		admin := v1.Group("/admin")
+		{
+			admin.POST("/auth", c.Authenticate)
+		}
+
+		user := v1.Group("/users")
+
+		// APIs need to be authenticated
+		user.Use(jwt.Auth(config.Config.JwtSecretPassword))
+		{
+			user.POST("", c.AddUser)
+			user.GET("/list", c.ListUsers)
+			user.GET("detail/:id", c.GetUserByID)
+			user.GET("/", c.GetUserByParams)
+			user.DELETE(":id", c.DeleteUserByID)
+			user.PATCH("", c.UpdateUser)
+		}
+	}
 
 	m.router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	err := m.router.Run(config.Config.Port)
 	if err == nil {
 		log.Info("server listening at port 8080")
+	} else {
+		log.Error("error starting server")
 	}
 }
