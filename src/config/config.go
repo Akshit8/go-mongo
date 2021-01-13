@@ -39,9 +39,9 @@ const (
 
 // Http Status messages
 const (
-	ErrNameEmpty      = "Name is empty"
-	ErrPasswordEmpty  = "Password is empty"
-	ErrNotObjectIDHex = "String is not a valid hex representation of an ObjectId"
+	ErrNameEmpty      = "name is empty"
+	ErrPasswordEmpty  = "password is empty"
+	ErrNotObjectIDHex = "string is not a valid hex representation of an ObjectId"
 )
 
 // Http Status Codes

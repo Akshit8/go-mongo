@@ -13,6 +13,7 @@ import (
 	"github.com/Akshit8/go-boilerplate/config"
 	"github.com/Akshit8/go-boilerplate/database"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
@@ -69,5 +70,8 @@ func main() {
 
 	m.router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	m.router.Run(config.Config.Port)
+	err := m.router.Run(config.Config.Port)
+	if err == nil {
+		log.Info("server listening at port 8080")
+	}
 }
