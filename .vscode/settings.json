@@ -22,5 +22,7 @@
   "gopls": {
     "ui.completion.usePlaceholders": true,
     "ui.diagnostic.staticcheck": true
-  }
+  },
+  "fileheader.Author": "Akshit Sadana (akshitsadana@gmail.com)",
+  "fileheader.tpl": "/*\r\n * @File: {file placeholder} \r\n * @Description: {file desc} \r\n * @LastModifiedTime: {updateTime} \r\n * @Author: {author} \r\n */\r\n"
 }
