@@ -14,6 +14,7 @@ import (
 	"github.com/Akshit8/go-boilerplate/config"
 	"github.com/Akshit8/go-boilerplate/controllers"
 	"github.com/Akshit8/go-boilerplate/database"
+	_ "github.com/Akshit8/go-boilerplate/docs"
 	"github.com/gin-gonic/contrib/jwt"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
@@ -65,7 +66,7 @@ func main() {
 	// Initialize server
 	if m.initServer() != nil {
 		fmt.Print("init server error")
-		return 
+		return
 	}
 
 	defer database.Database.Close()
