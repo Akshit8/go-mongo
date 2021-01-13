@@ -10,6 +10,8 @@ package config
 import (
 	"encoding/json"
 	"os"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // Configuration stores setting values
@@ -66,6 +68,17 @@ func LoadConfig() error {
 	if err != nil {
 		return err
 	}
+
+	// Setting Service Logger
+	// Output to stdout instead of the default stderr
+	log.SetOutput(os.Stdout)
+
+	// Only log the debug severity or above.
+	log.SetLevel(log.DebugLevel)
+
+	// log.SetFormatter(&log.TextFormatter{})
+	// Log as JSON instead of the default ASCII formatter.
+	log.SetFormatter(&log.JSONFormatter{})
 
 	return nil
 }
