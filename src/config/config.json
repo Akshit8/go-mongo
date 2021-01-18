@@ -1,0 +1,12 @@
+{
+    "port": ":8080",
+    "EnableGinConsoleLog": true,
+
+    "mgAddrs": "cluster0.y2ty6.mongodb.net",
+    "mgDBName": "userDB",
+    "mgDBUsername": "akshit",
+    "mgDBPassword": "akshit2853",
+
+    "jwtSecretPassword": "raycasdasdasdadad",
+    "issuer": "asdsdfasd"
+}
