@@ -4,6 +4,7 @@
     "8000:8000"
   ],
   "extensions": [
-    "golang.go"
+    "golang.go",
+    "mikey.vscode-fileheader"
   ]
 }

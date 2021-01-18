@@ -80,3 +80,4 @@ func LoadConfig() error {
 
 	return nil
 }
+
